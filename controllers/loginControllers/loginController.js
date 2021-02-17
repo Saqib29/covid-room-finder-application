@@ -11,7 +11,6 @@ function loginController(){
             loginModel.getUser(req.body, result => {
                 console.log(result);
             });
-            // console.log(req.body.password, req.body.userName);
 
         }
     }

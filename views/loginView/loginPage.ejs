@@ -1,27 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-</head>
-<body>
-    <form action="" method="POST">
-        <table>
-            <tr>
-                <td><label for="name">Name</label></td>
-                <td> <input type="text" name="userName"> </td>
-            </tr>
-            <tr>
-                <td><label for="password">NamePassword</label></td>
-                <td> <input type="password" name="password"> </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td> <input type="submit" value="Submit"> </td>
-            </tr>
-        </table>
-    </form>
-</body>
-</html>
+<!-- Header -->
+<%- include('../partials/header') %>
+
+
+<!-- Body -->
+
+<div class="container d-flex align-items-center" style="margin-top: 100px; height: 510px; background: #F8F9FA">
+    <div class="" style="margin-left: 300px; width: 500px">
+        <div class="alert alert-danger" role="alert">
+            username is already exist! kjhakjdaldkasldkasd;as d;laskd;asldasaskjashaksjhaklsasaSDFSDFSFSDF
+        </div>
+        <form action="" method="POST" class="pb-2">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="userName" class="form-control" id="username" placeholder="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        
+        <span>or register<a href="/register"> here</a></span>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<%- include('../partials/footer') %>
