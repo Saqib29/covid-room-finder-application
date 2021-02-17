@@ -2,7 +2,7 @@
 function homeController(){
     return {
         index(req, res){
-            return res.send('<h1>Hello from HomeController</h1>');
+            return res.render('homeView/homePage');
         }
     }
 }

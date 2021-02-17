@@ -2,7 +2,7 @@
 function registerController(){
     return {
         registerPage(req, res){
-            return res.send('Hello from registerController');
+            return res.render('registerView/registerPage');;
         }
     }
 }
