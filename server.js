@@ -3,11 +3,15 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+// CONFIGURATION
+app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-    console.log("Server woprk!");
-});
+// MIDDLEWARES
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
+// ROUTES
+require('./controllers/routes/routes')(app);
 
 
 app.listen(PORT, () => {
