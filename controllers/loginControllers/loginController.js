@@ -4,7 +4,7 @@ const loginModel    = require('../../models/loginModel');
 function loginController(){
     return {
         loginPage(req, res){
-            return res.render('loginView/loginPage');
+            return res.render('loginView/loginPage', { title : 'Login'});
         },
         login(req, res){
             // Validation proccess

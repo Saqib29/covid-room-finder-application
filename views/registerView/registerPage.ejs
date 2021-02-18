@@ -6,29 +6,31 @@
 <div class="container d-flex align-items-center" style="margin-top: 100px; height: 510px; background: #F8F9FA">
     <div class="" style="margin-left: 300px; width: 500px">
         <h2 class="p-3 text-center">Register</h2>
-
-        <div class="alert alert-danger" role="alert">
-            username is already exist! kjhakjdaldkasldkasd;as d;laskd;asldasaskjashaksjhaklsasaSDFSDFSFSDF
-        </div>
+        <% if(messages.reg_error){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= messages.reg_error %>
+            </div>
+        <% } %>
+        
         <form action="" method="POST" class="pb-2">
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name="userName" class="form-control" id="username" placeholder="username">
+                <input type="text" name="userName" class="form-control" id="username" placeholder="username" required>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
             </div>
             
             <div class="form-group">
                 <label for="confirmpassword">Confirm Password</label>
-                <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password">
+                <input type="password" name="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password" required>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
         
-        <span>Have account? login <a href="/register"> here</a></span>
+        <span>Have an account? login <a href="/login"> here</a></span>
     </div>
 </div>
 

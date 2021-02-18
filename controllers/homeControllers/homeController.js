@@ -2,7 +2,7 @@
 function homeController(){
     return {
         index(req, res){
-            return res.render('homeView/homePage');
+            return res.render('homeView/homePage', { title : 'Booking Page'});
         },
 
         bookRoom(req, res){
