@@ -6,6 +6,8 @@ const registerController = require('../registerControllers/registerController');
 function allRoutes(app){
     // Home
     app.get('/', homeController().index);
+    app.post('/bookroom', homeController().bookRoom);
+    app.post('/getroomcapacity', homeController().getCapacity);
 
     // LOGIN
     app.get('/login', loginController().loginPage);

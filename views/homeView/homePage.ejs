@@ -1,12 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking</title>
-</head>
-<body>
-    <h1>Booking Page</h1>
-</body>
-</html>
+<!-- Header -->
+<%- include('../partials/header') %>
+
+
+<!-- Body -->
+<div class="container" style="margin-top: 100px; height: 580px; background: #F8F9FA; margin-bottom: 80px">
+    <fieldset class="border p-4">
+        <legend  class="w-auto">Book working place</legend>
+        <div class="row">
+            <div class="col-9">
+                <!-- Room booking form -->
+                <form action="/bookroom" method="post">
+                    <table class="table table-borderless table-sm"">
+                        <tr>
+                            <td>Room: </td>
+                            <td>
+                                <select name="roomName">
+                                    <option value="office 1">office 1</option>
+                                    <option value="office 2">office 2</option>
+                                    <option value="office 3">office 3</option>
+                                    <option value="audi">office 4</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date: </td>
+                            <td>
+                                <input type="date" name="date"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Your Name: </td>
+                            <td>
+                                <input type="text" name="name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Book" /></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+            <div class="col-6">
+                <span style="color: red">Messages will be shown here</span>
+            </div>
+        </div>
+        
+    </fieldset>
+
+    <fieldset class="border p-4 mt-3" style="height: 260px">
+        <legend  class="w-auto">Get Capacity</legend>
+        <div class="row">
+            <div class="col-9">
+                <form action="/getroomcapacity" method="post">
+                    <table class="table table-borderless table-sm">
+                        
+                        <tr>
+                            <td style="width: 200px"><input type="date" name="date"/></td>
+                            <td><input type="submit" value="Get Capacity" /></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+            <div class="col-6">
+                <span style="color: red">Messages will be shown here</span>
+            </div>
+        </div>
+        
+    </fieldset>
+    
+</div>
+
+
+
+
+
+<!-- Footer -->
+<%- include('../partials/footer') %>
+
+
+
+<!-- 
+<div class="" style="margin-left: 300px; width: 500px" style="background: red">
+        
+    </div>
+ -->
