@@ -13,6 +13,7 @@ function allRoutes(app){
 
     // REGISTER
     app.get('/register', registerController().registerPage);
+    app.post('/register', registerController().register);
 }
 
 module.exports = allRoutes;
