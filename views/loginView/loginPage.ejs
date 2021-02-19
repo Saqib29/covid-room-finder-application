@@ -8,9 +8,16 @@
     <div class="" style="margin-left: 300px; width: 500px">
         <h2 class="p-3 text-center">Login</h2>
 
-        <div class="alert alert-danger" role="alert">
-            username is already exist! kjhakjdaldkasldkasd;as d;laskd;asldasaskjashaksjhaklsasaSDFSDFSFSDF
-        </div>
+        <% if(messages.login_msg) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= messages.login_msg %>
+            </div>
+        <% } else if(messages.success_msg) { %>
+            <div class="alert alert-success" role="alert">
+                <%= messages.success_msg %>
+            </div>
+        <% } %>
+        
         <form action="" method="POST" class="pb-2">
 
             <div class="form-group">

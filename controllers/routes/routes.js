@@ -1,11 +1,12 @@
 const homeController  = require('../homeControllers/homeController');
 const loginController = require('../loginControllers/loginController');
 const registerController = require('../registerControllers/registerController');
+const { verify }        = require('../../app/JWTauthentication');
 
 
 function allRoutes(app){
     // Home
-    app.get('/', homeController().index);
+    app.get('/', verify, homeController().index);
     app.post('/bookroom', homeController().bookRoom);
     app.post('/getroomcapacity', homeController().getCapacity);
 

@@ -7,11 +7,11 @@ function registerController(){
             return res.render('registerView/registerPage', { title : 'Register'});
         },
 
-        register(req, res){
+        async register(req, res){
             
             // message function for flash messages
-            var messages = (msg) => {
-                req.flash('reg_error', msg);
+            var messages = (type='reg_error', msg) => {
+                req.flash(type, msg);
                 
             }
 
@@ -36,7 +36,7 @@ function registerController(){
                 return res.redirect('/register');
             }
 
-            registerModel.checkUsernameExist(req.body.userName, (result) => {
+            await registerModel.checkUsernameExist(req.body.userName, (result) => {
 
                 // check username existance in database
                 if(result.exist){
@@ -50,6 +50,7 @@ function registerController(){
                     password: req.body.password
                 }, (status) => {
                     if(status){
+                        messages('success_msg','You are registered. please login.');
                         return  res.redirect('/login');
                     } else {
                         messages('Something went wrong!  please try again.');

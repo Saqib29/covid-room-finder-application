@@ -4,8 +4,8 @@ module.exports = {
 
     getUser: (user, callback) => {
         var sql = `SELECT * FROM usertable WHERE userName = ? AND password = ?`;
-        db.getResult(sql, [user.userName, user.password], (results) => {
-            callback(results);
+        db.getResult(sql, [user.userName, user.password], (result) => {
+            callback(result[0]);
         });
     }
 }
