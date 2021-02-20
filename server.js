@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 
 // MIDDLEWARES
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookie());

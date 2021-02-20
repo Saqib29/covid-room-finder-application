@@ -4,7 +4,7 @@ var ACCESS_TOKEN = "this_token_should_be_hidden";
 
 
 function JWTauthentication(user, next){
-    const accessToken = jwt.sign(user, ACCESS_TOKEN);
+    const accessToken = jwt.sign(user, ACCESS_TOKEN, { expiresIn : '1h' });
     return accessToken;
 }
 
@@ -13,8 +13,7 @@ function verify(req, res, next){
     if(token == null) return  res.redirect('/login');
 
     jwt.verify(token, ACCESS_TOKEN, (err, result) => {
-        if(err) return  res.redirect('/');
-
+        if(err) return  res.redirect('/login');
         next();
     });
 }

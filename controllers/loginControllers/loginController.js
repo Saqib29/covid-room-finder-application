@@ -24,6 +24,7 @@ function loginController(){
                 
                 // JWT authentication
                 const token = JWTauthentication({ username : result.userName});
+                res.cookie('userId', result.userId);
                 res.cookie('x-access-token', token);
                 return   res.redirect('/');
                 

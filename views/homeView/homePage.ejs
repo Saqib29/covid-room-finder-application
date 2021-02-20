@@ -9,29 +9,30 @@
         <div class="row">
             <div class="col-9">
                 <!-- Room booking form -->
-                <form action="/bookroom" method="post">
+                
+                <form id="book_working_place">
                     <table class="table table-borderless table-sm"">
                         <tr>
                             <td>Room: </td>
                             <td>
-                                <select name="roomName">
-                                    <option value="office 1">office 1</option>
-                                    <option value="office 2">office 2</option>
-                                    <option value="office 3">office 3</option>
-                                    <option value="audi">office 4</option>
+                                <select name="roomId" id="roomId">
+                                    <% rooms.forEach(room => { %> 
+                                        <option value="<%= room.roomId %>"><%= room.roomName %></option>
+
+                                    <% }); %>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Date: </td>
                             <td>
-                                <input type="date" name="date"/>
+                                <input type="date" name="date" id="date" required/>
                             </td>
                         </tr>
                         <tr>
                             <td>Your Name: </td>
                             <td>
-                                <input type="text" name="name"/>
+                                <input type="text" name="userName" id="name" required/>
                             </td>
                         </tr>
                         <tr>
@@ -42,18 +43,19 @@
                 </form>
 
             </div>
-            <div class="col-6">
-                <span style="color: red">Messages will be shown here</span>
+            <div id="message">
+                <p id="child" style="color: red"></p>
             </div>
         </div>
         
     </fieldset>
-
+ 
     <fieldset class="border p-4 mt-3" style="height: 260px">
         <legend  class="w-auto">Get Capacity</legend>
         <div class="row">
             <div class="col-9">
-                <form action="/getroomcapacity" method="post">
+            <!-- action="/getroomcapacity" method="post" -->
+                <form id="get_capacity">
                     <table class="table table-borderless table-sm">
                         
                         <tr>
@@ -77,13 +79,8 @@
 
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+<script type="module" src="/js/app.js"></script>
+
 <!-- Footer -->
 <%- include('../partials/footer') %>
-
-
-
-<!-- 
-<div class="" style="margin-left: 300px; width: 500px" style="background: red">
-        
-    </div>
- -->
