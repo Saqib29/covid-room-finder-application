@@ -1,5 +1,6 @@
 const db = require('../../models/dbConnection/db');
 const homeModel = require('../../models/homeModel');
+const moment   = require('moment');
 
 function homeController(){
     return {
@@ -54,6 +55,25 @@ function homeController(){
 
         getCapacity(req, res){
             console.log(req.body);
+            if(req.body.date < moment(new Date()).format('YYYY-MM-DD')){
+                var message = `Please put a valid date! not before ${moment(new Date()).format('YYYY-MM-DD')}`;
+                return  res.json({ type : 'invalid', message });
+            }
+            else{
+                // get total places
+                homeModel.getTotalPlaces(totalPlaces => {
+                    
+                    // get total bookings on a particular day
+                    homeModel.allBookingsOnTheDay(req.body.date, (result) => {
+
+                        var parcentage = 100 * (result.total_book / totalPlaces.places); // calculate parcentage
+
+                        if(!parcentage) parcentage = 100;  // manage if there is no booking on a specific date
+                        
+                        return  res.json({ type : 'success', parcentage });
+                    });
+                });
+            }
         }
     }
 }

@@ -51,6 +51,30 @@ document.querySelector('#book_working_place').addEventListener('submit', (e) => 
 // Get capacity
 document.querySelector('#get_capacity').addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('Get Capacity');
+    var date   = document.querySelector('#date_input').value;
+    
+    axios.post('/getroomcapacity', { date }).then(result => {
+        var sec_div = document.getElementById("div");
+        var child = document.getElementById("divChild");
+        sec_div.innerHTML = '';
+
+        //  if date input is invalid or before the current date
+        if(result.data.type == 'invalid'){
+            var p = document.createElement("p");
+            p.setAttribute('id', 'divChild')
+            p.setAttribute('style', 'color: red; margin-left: 21px')
+            var message = document.createTextNode(result.data.message);
+            p.appendChild(message);
+            sec_div.appendChild(p)
+        }
+        else if(result.data.type == 'success'){
+            var p = document.createElement("p");
+            p.setAttribute('id', 'divChild')
+            p.setAttribute('style', 'color: green; margin-left: 21px')
+            var message = document.createTextNode(`The capacity of free working places on ${date} is ${result.data.parcentage}%`);
+            p.appendChild(message);
+            sec_div.appendChild(p)
+        }
+    });
 });
 

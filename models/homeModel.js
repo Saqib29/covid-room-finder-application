@@ -40,5 +40,19 @@ module.exports = {
         db.getResult(sql, [date], (roomNames) => {
             callback(roomNames);
         });
+    },
+
+    getTotalPlaces: (callback) => {
+        var sql = `SELECT SUM(roomCapacity) AS places FROM roomtable`;
+        db.getResult(sql, null, (sum) => {
+            callback(sum[0]);
+        });
+    },
+
+    allBookingsOnTheDay: (date, callback) => {
+        var sql = `SELECT COUNT(*) AS total_book FROM bookingtable WHERE date = ?`;
+        db.getResult(sql, [date], (result) => {
+            callback(result[0]);
+        });
     }
 }
