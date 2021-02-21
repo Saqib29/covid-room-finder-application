@@ -10,7 +10,7 @@ function registerController(){
         async register(req, res){
             
             // message function for flash messages
-            var messages = (type='reg_error', msg) => {
+            var messages = (type, msg) => {
                 req.flash(type, msg);
                 
             }
@@ -19,20 +19,21 @@ function registerController(){
             var schema = new passwordValidator();
             schema.is().min(6).max(20).symbols(1);
             if(!schema.validate(req.body.password)){
-                messages('Password has to be at least 6 characters long with at least 1 symbol');
+                messages('reg_error','Password has to be at least 6 characters long with at least 1 symbol');
+                console.log('wrong');
                 return  res.redirect('/register');
             }
 
             // check username length
             let l = req.body.userName;
             if(req.body.userName.length < 3){
-                messages('Username must have more than 3 characters!');
+                messages('reg_error','Username must have more than 3 characters!');
                 return  res.redirect('/register');
             }
             
             // unmatch password and confirm password
             if(req.body.password != req.body.confirmpassword){
-                messages(`password doesn't matched!`);
+                messages('reg_error',`password doesn't matched!`);
                 return res.redirect('/register');
             }
 
@@ -40,7 +41,7 @@ function registerController(){
 
                 // check username existance in database
                 if(result.exist){
-                    messages("username already exists!");
+                    messages('reg_error','username already exists!');
                     return  res.redirect('/register');
                 }
 
@@ -53,7 +54,7 @@ function registerController(){
                         messages('success_msg','You are registered. please login.');
                         return  res.redirect('/login');
                     } else {
-                        messages('Something went wrong!  please try again.');
+                        messages('reg_error','Something went wrong!  please try again.');
                         return  res.redirect('/register');
                     }
                 });
