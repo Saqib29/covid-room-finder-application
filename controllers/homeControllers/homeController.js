@@ -66,7 +66,7 @@ function homeController(){
                     // get total bookings on a particular day
                     homeModel.allBookingsOnTheDay(req.body.date, (result) => {
 
-                        var parcentage = 100 * (result.total_book / totalPlaces.places); // calculate parcentage
+                        var parcentage = parseInt(100 - (100 * (result.total_book / totalPlaces.places))); // calculate parcentage
 
                         if(!parcentage) parcentage = 100;  // manage if there is no booking on a specific date
                         
